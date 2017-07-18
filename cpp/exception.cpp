@@ -3,15 +3,15 @@
  *
  *       Filename:  exception.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  09/30/2014 11:01:18 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  YOUR NAME (), 
- *        Company:  
+ *         Author:  YOUR NAME (),
+ *        Company:
  *
  * =====================================================================================
  */
@@ -21,7 +21,7 @@
 #include <exception>
 
 class MyProblem : public std::exception {
-    public:
+public:
     virtual const char* what() const throw() {
         return "this is a test for exception";
     }
