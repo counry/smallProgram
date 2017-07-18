@@ -38,7 +38,10 @@ int main(void)
         f();
     } catch (const std::exception &error) {
         std::cout<<error.what()<<std::endl;
+    } catch(...) {
+        std::cout << "here 22222" << std::endl;
     }
+
     return 0;
 }
 
