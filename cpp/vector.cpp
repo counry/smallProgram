@@ -33,6 +33,7 @@ int main(void)
 
     for (int i = 1; i < 10; i++) {
         col.push_back(i);
+        cout << "capacity: " << col.capacity() << endl;
     }
 
     cout << "push_back 9:" << endl;
