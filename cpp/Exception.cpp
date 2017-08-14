@@ -1,38 +1,47 @@
-
 /*
  * =====================================================================================
  *
- *       Filename:  Exception.cpp
+ *       Filename:  exception.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
- *        Created:  05/05/2016 02:03:54 PM
+ *        Created:  09/30/2014 11:01:18 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  YOUR NAME (), 
- *        Company:  
+ *         Author:  YOUR NAME (),
+ *        Company:
  *
  * =====================================================================================
  */
 
+
 #include <iostream>
-#include <stdexcept>
+#include <exception>
+
+class MyProblem : public std::exception {
+public:
+    virtual const char* what() const throw() {
+        return "this is a test for exception";
+    }
+};
+
+void f() throw(MyProblem)
+{
+    throw MyProblem();
+}
 
 int main(void)
 {
     try {
-        std::cout << "start ..." << std::endl;
-        int i = 52%0;
-        std::cout << "i = " << i << std::endl;
-    } catch(std::exception& e) {
-        std::cout << "here 11111" << std::endl;
-        std::cout<<e.what()<<std::endl;
+        f();
+    } catch (const std::exception &error) {
+        std::cout<<error.what()<<std::endl;
     } catch(...) {
         std::cout << "here 22222" << std::endl;
     }
-    std::cout << "aaaa" << std::endl;
 
     return 0;
 }
+
