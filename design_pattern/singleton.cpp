@@ -41,6 +41,8 @@ private:
 
 class operation {
 public:
+    operation():test1(10) {}
+
     static void init() {
         op_database::get_op_database();
     }
@@ -48,10 +50,28 @@ public:
     static int get_m_number() {
         return op_database::get_op_database().m_number;
     }
+
+public:
+    int test1;
+    int test2;
 };
+
+namespace op {
+#define CONF "./config_test"
+}
+
+
+void test_string(std::string str) {
+    std::cout << "str=" << str << std::endl;
+}
+
+
 
 int main(void)
 {
+    operation oper;
+    std::cout << oper.test1 << oper.test2 << std::endl;
     std::cout << "number=" << operation::get_m_number() << std::endl;
+    test_string(CONF);
 }
 
