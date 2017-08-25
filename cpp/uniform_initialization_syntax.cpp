@@ -43,7 +43,10 @@ class C
 public:
     int a=7; //C++11 only
 public:
-    C(){};
+    C(){std::cout << "construct C" << std::endl;};
+    C(C&_c){std::cout << "copy construct C" << std::endl;};
+    C&operator=(const C& _c){std::cout << "assign construct C" << std::endl;};
+
 };
 
 int main(void)
@@ -81,5 +84,14 @@ int main(void)
     std::cout << "x.a=" << x.a[0] << " " << x.a[1] << " " << x.a[1] << " " << x.a[1] << std::endl;
     std::cout << "c.a=" << c.a<< std::endl;
 
+    C c1;
+    C &c2 = c1;
+    C c3 = c2;
+    C c4;
+    c4 = c3;
+    std::cout << &c1 << std::endl;
+    std::cout << &c2 << std::endl;
+    std::cout << &c3 << std::endl;
+    std::cout << &c4 << std::endl;
     return 0;
 }
