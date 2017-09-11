@@ -28,11 +28,19 @@ int add(int i, int j)
 }
 
 class divide {
+public:
     int operator()(int denominator, int divisor)
     {
         return denominator / divisor;
     }
 };
+
+//struct divide {
+//    int operator()(int denominator, int divisor)
+//    {
+//        return denominator / divisor;
+//    }
+//};
 
 
 int main(void)
@@ -41,18 +49,17 @@ int main(void)
     {
         return i % j;
     };
-    std::function<int(int,int)> fadd = add;
-    std::cout << fadd(10,5);
 
     typedef std::function<int(int,int)> Callback;
 
-    std::map<std::string, Callback> binops = {
+    std::map<std::string, Callback> binops  = {
             {"+", add},
             {"-", std::minus<int>()},
             {"/", divide()},
             {"*", [](int i, int j){return i * j;}},
             {"%", mod}
     };
+
 
     int arg1 = 10;
     int arg2 = 5;

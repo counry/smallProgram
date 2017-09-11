@@ -24,7 +24,9 @@ int main(void)
 {
 	struct rusage res;
 	if (getrusage(RUSAGE_SELF, &res) == 0) {
-		
+		std::cout << "user CPU time used sec:" << res.ru_utime.tv_sec << " usec:" << res.ru_utime.tv_usec << std::endl;
+		std::cout << "system CPU time used sec:" << res.ru_stime.tv_sec << " usec:" << res.ru_stime.tv_usec << std::endl;
+		std::cout << "maximum size of residet set(kilobytes):" << res.ru_maxrss << std::endl;
 	} else {
 		std::cout << "getrusage error" << std::endl;
 	}
